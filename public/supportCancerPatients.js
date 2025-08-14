@@ -36,7 +36,8 @@ let isDark = false;
 light_modeBtn.addEventListener('click', () => {
   if (!isDark) {
     // Apply Dark Mode
-    document.body.style.backgroundColor = "#102E50";  // Dark grey
+    document.body.style.backgroundColor = "#0b2440ff";  // Dark grey
+    // document.body.style.backgroundColor = "#181C14";  // Dark grey
     document.body.style.color = "#ffffff";            // White text
     light_modeBtn.style.backgroundColor = "#0000FF";     // Darker button bg
     light_modeBtn.style.color = "#fff";
@@ -152,11 +153,11 @@ function validateUniqueRegisterForm() {
 //       return false;
 //     }
 //     console.log("✅ Donation stored");
-//     alert("✅ Donation stored successfully. Redirecting to payment...");
+//     // alert("✅ Donation stored successfully. Redirecting to payment...");
 
 
 //     // 🔁 UPI Payment Redirect
-//     const upiID = "your-upi-id@oksbi"; // ✅ Replace with your UPI ID
+//     const upiID = "khurshedansari12403@okhdfcbank"; // ✅ Replace with your UPI ID
 //     const upiLink = `upi://pay?pa=${upiID}&pn=${encodeURIComponent(name)}&am=${amount}&cu=INR`;
 //     window.location.href = upiLink;
 

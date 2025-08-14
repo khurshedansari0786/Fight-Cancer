@@ -1,3 +1,4 @@
+require('dotenv').config();
 const express = require('express');
 const mongoose = require('mongoose');
 const path = require('path');
@@ -6,12 +7,16 @@ const app = express();
 
 // MongoDB Connection......
 
-mongoose.connect("mongodb://127.0.0.1:27017/suportSystem")
-  .then(() => {
-    console.log("MongoDB Connected");
-    console.log("Models registered:", mongoose.modelNames()); // 👈 Check this
-  })
-  .catch(err => console.error("MongoDB Error:", err));
+// mongoose.connect("mongodb://127.0.0.1:27017/suportSystem")
+//   .then(() => {
+//     console.log("MongoDB Connected");
+   
+//   })
+//   .catch(err => console.error("MongoDB Error:", err));
+
+mongoose.connect(process.env.MONGO_URI)
+  .then(() => console.log("✅ MongoDB Connected"))
+  .catch(err => console.log(err));
 
 // Models
 const Register = require("./models/Register");
@@ -26,7 +31,6 @@ app.use(express.static(path.join(__dirname, "public")));
 // Register Route
 app.post("/api/register", async (req, res) => {
   try {
-    console.log("Received Register Data:", req.body); //show data in console
     const { name, email, password } = req.body;
     await Register.create({ name, email, password });
    res.status(200).json({ message: 'Registration Successfully!'});
@@ -39,7 +43,6 @@ app.post("/api/register", async (req, res) => {
 // Contact Route
 app.post("/api/contact", async (req, res) => {
   try {
-    console.log("Received Contact Data:", req.body); // show data in console
     const { name, email, message } = req.body;
     await Contact.create({ name, email, message });
    res.status(200).json({ message: 'Contact form Submitted!' });
@@ -53,8 +56,6 @@ app.post("/api/contact", async (req, res) => {
 // Donation Route
 app.post("/api/donation", async (req, res) => {
   try {
-    console.log("Received Donation Data:", req.body);
-
     const { donorName, donationAmount, donationMessage } = req.body;
 
     await Donation.create({ donorName, donationAmount, donationMessage });

@@ -55,7 +55,7 @@
         position: fixed;
         inset: 0;
         z-index: -2;
-        background: linear-gradient(-45deg, #2a263b, #2d2657, #141e30, #243b55);
+        background: linear-gradient(-45deg, #4323d2, #281596, #142c57, #4a80be);
         background-size: 400% 400%;
         animation: gradientShift 15s ease infinite;
     }
@@ -150,9 +150,18 @@
         height: 220px;
         object-fit: cover;
         border-radius: 50%;
-        border: 4px solid rgba(255, 255, 255, .08);
-        box-shadow: var(--shadow);
+        box-shadow: 0 0 30px rgb(236, 29, 175);
     }
+
+    #hero img:hover{
+      
+    transition: transform 0.5s ease-in;
+    }
+     #hero img:hover{
+      transform: scale(1.1);
+    }
+
+    
 
     #hero h1 {
         font-size: clamp(2rem, 5vw, 3.2rem);
@@ -372,7 +381,7 @@
 
         <!-- Mission / Vision -->
         <section id="mission" class="reveal">
-            <h3 class="section-title">🌟<span style="color:rgb(236, 12, 150) ;">My Mission</span> & Vision</h3>
+            <h3 class="section-title"><span style="color:rgb(236, 12, 150) ;">My Mission</span> & Vision</h3>
             <div class="grid">
                 <div class="card glass">
                     <h4>Mission</h4>
@@ -389,7 +398,7 @@
 
         <!-- Story -->
         <section id="story" class="reveal">
-            <h3 class="section-title">👨‍💼<span style="color:rgb(236, 12, 150) ;">My Story</span> (Why I Started)</h3>
+            <h3 class="section-title"><span style="color:rgb(236, 12, 150) ;">My Story</span> (Why I Started)</h3>
             <div class="card glass">
                 <p>
                     (You can fill this section with your emotional story) — I noticed that cancer patients and their
@@ -402,7 +411,7 @@
 
         <!-- Education -->
         <section id="education" class="reveal">
-            <h3 class="section-title">🎓 <span style="color:rgb(236, 12, 150) ;">Educational</span> Background</h3>
+            <h3 class="section-title"> <span style="color:rgb(236, 12, 150) ;">Educational</span> Background</h3>
             <div class="card glass">
                 <div class="timeline">
                     <div class="timeline-item">
@@ -423,7 +432,7 @@
 
         <!-- Roles -->
         <section id="roles" class="reveal">
-            <h3 class="section-title">💼 <span style="color:rgb(236, 12, 150) ;">What</span> I Do</h3>
+            <h3 class="section-title"> <span style="color:rgb(236, 12, 150) ;">What</span> I Do</h3>
             <div class="grid">
                 <div class="card glass">
                     <h4>Platform Building</h4>
@@ -449,7 +458,7 @@
 
         <!-- Skills -->
         <section id="skills" class="reveal">
-            <h3 class="section-title">🛠️ <span style="color:rgb(236, 12, 150) ;">Technical</span> Skills</h3>
+            <h3 class="section-title"> <span style="color:rgb(236, 12, 150) ;">Technical</span> Skills</h3>
             <div class="grid">
                 <div class="card glass">
                     <h4>Frontend</h4>
@@ -472,7 +481,7 @@
 
         <!-- Values -->
         <section id="values" class="reveal">
-            <h3 class="section-title">🧭 <span style="color:rgb(236, 12, 150) ;">My Core</span> Values</h3>
+            <h3 class="section-title"> <span style="color:rgb(236, 12, 150) ;">My Core</span> Values</h3>
             <ul class="values-list">
                 <li>Transparency</li>
                 <li>Empathy</li>
@@ -485,7 +494,7 @@
 
         <!-- Contact -->
         <section id="contact" class="reveal">
-            <h3 class="section-title">📬 <span style="color:rgb(236, 12, 150) ;">Contact</span> Me</h3>
+            <h3 class="section-title"> <span style="color:rgb(236, 12, 150) ;">Contact</span> Me</h3>
             <div class="card glass">
                 <p>Suggestions, collaborations, or questions — feel free to connect.</p>
                 <div class="contact-links">

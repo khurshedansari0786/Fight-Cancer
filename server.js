@@ -61,7 +61,7 @@ app.post("/api/donation", async (req, res) => {
     await Donation.create({ donorName, donationAmount, donationMessage });
 
     // ✅ Payment link generate
-    const upiID = "khurshedansari12403@okhdfcbank"; // apna UPI ID dalen
+  const upiId = process.env.UPI_ID;
     const paymentLink = `upi://pay?pa=${upiID}&pn=${encodeURIComponent(donorName)}&am=${donationAmount}&cu=INR`;
 
     res.status(200).json({

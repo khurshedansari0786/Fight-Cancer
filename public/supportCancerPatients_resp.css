@@ -1,0 +1,512 @@
+@media(max-width:600px) {
+
+
+    .nav-links {
+        flex-direction: column;
+        position: absolute;
+        top: 70px;
+        right: 15px;
+        font-size: 20px;
+        width: 130px;
+        border-radius: 5px;
+        background-color: #888282;
+        color: black;
+        margin-top: 0px;
+        border: none;
+        display: none;
+        z-index: 9999;
+    }
+
+
+
+    .menu-toggle {
+        display: block;
+        margin-right: 15px;
+        cursor: pointer;
+
+    }
+
+    .donate-part .nav-register {
+        font-size: 15px;
+        padding: 3px 8px;
+
+    }
+
+    .donate-part button {
+        margin-right:0px;
+        padding: 3px 5px;
+        font-size: 15px;
+
+    }
+    .navbar ul{
+        gap: 10px;
+    }
+
+    .navbar .nav-links {
+        gap: 0px;
+        padding: 8px 8px 8px 20px;
+        display: none;
+    }
+
+    .nav-links .item {
+        padding: 5px;
+    }
+
+    .visible {
+        display: block;
+    }
+
+    .navbar {
+        display: flex;
+        align-items: center;
+        justify-content: space-around;
+        width: 100%;
+        position: fixed;
+        gap: 0px;
+        flex-wrap: wrap;
+
+
+    }
+
+    .navbar ul li a {
+        font-size: 15px;
+        margin: 0px;
+        width: 100%;
+
+        padding: 0px 0px;
+        box-sizing: border-box;
+        border: 0px solid transparent;
+    }
+
+    .navbar ul li a:hover {
+        border: none;
+        color: #ded1d1;
+    }
+
+    .logo {
+        height: 50px;
+        width: 50px;
+        margin-left: 17px;
+        margin-right: 10px;
+    }
+
+
+    .home-page #element {
+        font-size: 39px;
+
+    }
+
+
+    .home-page {
+        padding-left: 25px;
+
+    }
+
+    .home-page h3 {
+        font-size: 18px;
+
+
+    }
+
+    .home-page .btn a button {
+        padding: 7px 21px;
+        font-size: 15px;
+    }
+
+    .home-page .btn_read a button {
+        padding: 7px 21px;
+        font-size: 15px;
+    }
+
+    .home-page p {
+        text-align: start;
+
+    }
+
+    #home {
+        height: 650px;
+    }
+
+    .fighter p {
+        font-size: 11px;
+    }
+
+
+    #focus_area .cancer_type {
+        gap: 100px;
+      
+    }
+
+    .card1 h1 {
+        text-align: center;
+    }
+
+    .fund_utilization_container {
+        flex-direction: column;
+    }
+
+
+
+    .card2 .container1 .success-pics {
+        margin-top: 160px;
+        width: 300px;
+        height: 250px;
+
+    }
+
+    #fund-utilization img {
+        margin-top: 20px;
+
+    }
+
+    .scroll-content img {
+
+        height: 90px;
+
+    }
+
+    .footer {
+        display: flex;
+        flex-direction: column;
+        justify-content: center;
+        align-items: center;
+    }
+
+    .footer .footerDiv {
+        display: flex;
+        flex-direction: column;
+        text-align: center;
+
+    }
+
+    .footer .footerDiv a {
+        font-size: 16px;
+    }
+
+
+
+    .last-footer {
+        gap: 10px;
+        padding: 10px;
+        flex-direction: column;
+        flex-wrap: wrap;
+        text-align: center;
+    }
+
+
+
+}
+
+
+@media(min-width:601px) and (max-width:1140px) {
+
+    .last-footer {
+        gap: 10px;
+        padding: 10px;
+        flex-direction: column;
+        flex-wrap: wrap;
+        text-align: center;
+    }
+
+    .nav-links {
+        flex-direction: column;
+        position: absolute;
+        top: 70px;
+        right: 15px;
+        font-size: 20px;
+        width: 130px;
+        border-radius: 5px;
+        background-color: #888282;
+        color: black;
+        margin-top: 0px;
+        border: none;
+        display: none;
+        z-index: 9999;
+    }
+
+
+
+    .menu-toggle {
+        display: block;
+        margin-left: 12px;
+        cursor: pointer;
+
+    }
+
+    .navbar .nav-links {
+        gap: 0px;
+        padding: 8px 8px 8px 20px;
+        display: none;
+    }
+
+    .nav-links .item {
+        padding: 5px;
+    }
+
+    .visible {
+        display: block;
+    }
+
+    .navbar {
+        display: flex;
+        align-items: center;
+        justify-content: space-around;
+        width: 100%;
+        position: fixed;
+        gap: 0px;
+        flex-wrap: wrap;
+
+
+    }
+
+    .navbar ul li a {
+        font-size: 15px;
+        margin: 0px;
+        width: 100%;
+
+        padding: 0px 0px;
+        box-sizing: border-box;
+        border: 0px solid transparent;
+    }
+
+    .navbar ul li a:hover {
+        border: none;
+        color: #ded1d1;
+    }
+
+    .logo {
+        height: 50px;
+        width: 50px;
+        margin-left: 10px;
+        margin-right: 10px;
+    }
+
+    #home {
+        height: 650px;
+    }
+
+
+}
+
+
+
+
+@media(min-width:1080px) and (max-width:1200px) {
+    .donate-part {
+        display: flex;
+        justify-content: center;
+        align-items: center;
+        margin-right: 0px;
+        gap: 10px;
+
+    }
+
+
+    .donate-part .nav-register {
+        font-size: 15px;
+        padding: 3px 8px;
+
+    }
+
+    .donate-part button {
+        margin-right: 15px;
+        padding: 3px 5px;
+        font-size: 15px;
+
+    }
+
+
+    .last-footer {
+        gap: 0px;
+
+        padding: 15px;
+        flex-direction: column;
+        flex-wrap: wrap;
+        text-align: center;
+    }
+
+
+
+    .gallery_container {
+        display: grid;
+        grid-template-columns: repeat(2, 1fr);
+    }
+
+
+
+
+    .card2 h1 {
+        font-size: 28px;
+    }
+
+    .program_heading hr {
+        height: 4px;
+        width: 328px;
+
+    }
+
+    .card4 .gallery_container img {
+
+        max-width: 180px;
+        height: 180px;
+
+    }
+
+    .card4 .gallery_container {
+        padding: 15px 0px 15px 0px;
+    }
+
+    .mv-text {
+
+        font-size: 16px;
+    }
+
+    .mv-heading {
+
+        font-size: 28px;
+        color: rgb(236, 12, 150);
+
+    }
+
+    p {
+        display: block;
+        margin-block-start: 1em;
+        margin-block-end: 1em;
+        margin-inline-start: 0px;
+        margin-inline-end: 0px;
+        unicode-bidi: isolate;
+    }
+
+    .program_paragraph {
+        text-align: left;
+
+    }
+
+
+    .program_heading h2 {
+        font-size: 28px;
+        color: rgb(227, 30, 96);
+
+    }
+
+    .card2 .container1 .success-pics {
+        margin-top: 128px;
+    }
+
+    .card2 h2 {
+
+        padding-bottom: 0px;
+    }
+
+    .card1 .patient-part .container {
+        width: 310px;
+        height: 410px;
+        margin-top: 10px;
+    }
+
+    .card1 .patient-part .container .pics-part {
+        width: 300px;
+        height: 250px;
+        margin-bottom: 15px;
+
+    }
+
+    .card1 h1 {
+        font-size: 28px;
+
+    }
+
+    animatedLetterGradient animation {
+        background-position-x: 39.2705%;
+        background-position-y: 80.3648%;
+    }
+
+    #home {
+        height: 650px;
+    }
+
+    #cancer_bg .heading_cancer_bg h1 {
+        text-align: center;
+    }
+}
+
+
+@media (min-width:600px) and (max-width:786px) {
+
+    p {
+
+        font-size: 16px;
+    }
+
+
+}
+
+@media (min-width:951px) and (max-width:1150px) {
+    #fund-utilization img {
+
+        height: 300px;
+        width: 300px;
+    }
+
+    .ul_p {
+        gap: 0px;
+        max-width: 764px;
+        display: flex;
+        flex-direction: column;
+    }
+
+
+}
+
+@media (min-width:601px) and (max-width:950px) {
+    #fund-utilization img {
+        margin-top: 20px;
+        height: 400px;
+        width: 395px;
+    }
+
+    .ul_p {
+        gap: 20px;
+        max-width: 764px;
+        display: flex;
+        flex-direction: column;
+    }
+
+
+}
+
+@media(min-width:601px) and (max-width:890px) {
+    .fund_utilization_container {
+        flex-direction: column;
+    }
+
+    #home {
+        height: 650px;
+    }
+
+
+
+}
+
+
+@media(max-width:387px) {
+    .menu-toggle {
+        margin-right: 3px;
+
+    }
+
+    .donate-part button {
+        margin-right: 0px;
+        font-size: 14px;
+
+    }
+
+    .donate-part .nav-register {
+        font-size: 14px;
+
+    }
+
+    .home-page #element {
+        font-size: 37px;
+    }
+}

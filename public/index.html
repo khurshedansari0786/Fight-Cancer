@@ -1,0 +1,893 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Support cancer Patients</title>
+    <link rel="stylesheet" href="supportCancerPatients.css">
+    <link rel="stylesheet" href="supportCancerPatients_resp.css">
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.6.0/css/brands.min.css">
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.6.0/css/all.min.css">
+    <link href="https://fonts.googleapis.com/css2?family=Poppins:wght@400;600&display=swap" rel="stylesheet">
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link
+        href="https://fonts.googleapis.com/css2?family=Cabin:ital,wght@0,400..700;1,400..700&family=Gravitas+One&family=Mozilla+Headline:wght@200..700&family=Titillium+Web:ital,wght@0,200;0,300;0,400;0,600;0,700;0,900;1,200;1,300;1,400;1,600;1,700&display=swap"
+        rel="stylesheet">
+
+</head>
+
+<style>
+    body {
+        /* font-family: Arial, sans-serif; */
+        margin: 0;
+        padding: 0;
+        background: url('your-website-background.jpg') no-repeat center center fixed;
+        background-size: cover;
+    }
+
+    /* Modal Overlay */
+    .modal-overlay {
+        position: fixed;
+        top: 0;
+        left: 0;
+        width: 100%;
+        height: 100%;
+        background: rgba(0, 0, 0, 0.4);
+        /* Transparent overlay*/
+        display: flex;
+        justify-content: center;
+        align-items: center;
+        z-index: 9999;
+    }
+
+    /* Form Container */
+    .contact-form {
+        background: #fff;
+        padding: 20px 30px;
+        border-radius: 8px;
+        box-shadow: 0 5px 15px rgba(0, 0, 0, 0.3);
+        width: 90%;
+        max-width: 400px;
+        position: relative;
+        animation: fadeInUnique1 0.3s ease-in-out;
+    }
+
+    @keyframes fadeInUnique1 {
+        from {
+            opacity: 0;
+            transform: scale(0.9);
+        }
+
+        to {
+            opacity: 1;
+            transform: scale(1);
+        }
+    }
+
+
+    .contact-form h2 {
+        margin-top: 0;
+        font-size: 22px;
+        color: #333;
+    }
+
+    .contact-form input,
+    .contact-form textarea {
+        width: 100%;
+        padding: 10px;
+        margin: 8px 0 16px;
+        border: 1px solid #ccc;
+        border-radius: 4px;
+    }
+
+    .contact-form button {
+        background-color: #007BFF;
+        color: #fff;
+        padding: 10px 15px;
+        border: none;
+        border-radius: 4px;
+        cursor: pointer;
+        width: 100%;
+    }
+
+    .contact-form button:hover {
+        background-color: #0056b3;
+    }
+
+    /* Close Button */
+    .close-btn {
+        position: absolute;
+        top: 8px;
+        right: 12px;
+        font-size: 22px;
+        cursor: pointer;
+        color: #888;
+    }
+
+    .close-btn:hover {
+        color: #000;
+
+    }
+
+    /* Hide modal by default */
+    .modal-overlay.hidden {
+        display: none;
+    }
+
+
+    @media(max-width:567px) {
+
+        .contact-form input,
+        .contact-form textarea {
+            width: 100%;
+            padding: 8px;
+            margin: 5px 0 14px;
+        }
+
+        .contact-form {
+            background: #fff;
+            padding: 10px 20px;
+            border-radius: 8px;
+            box-shadow: 0 5px 15px rgba(0, 0, 0, 0.3);
+            width: 100%;
+            max-width: 340px;
+        }
+
+        .contact-form h2 {
+            margin-bottom: 15px;
+            font-size: 25px;
+            color: #333;
+        }
+
+        .contact-form button {
+            padding: 5px 14px;
+            border: none;
+            border-radius: 4px;
+            cursor: pointer;
+            width: 100%;
+        }
+
+    }
+
+    /* Register-form */
+
+    .register-modal-overlay {
+        position: fixed;
+        top: 0;
+        left: 0;
+        width: 100%;
+        height: 100vh;
+        background-color: rgba(0, 0, 0, 0.6);
+        display: flex;
+        align-items: center;
+        justify-content: center;
+        z-index: 9999;
+    }
+
+    .hidden-register {
+        display: none;
+    }
+
+    .unique-register-form {
+        background-color: #fff;
+        padding: 30px;
+        border-radius: 10px;
+        width: 90%;
+        max-width: 400px;
+        box-shadow: 0 5px 20px rgba(0, 0, 0, 0.3);
+        position: relative;
+        animation: fadeInUnique 0.3s ease-in-out;
+    }
+
+    .unique-register-form h2 {
+        margin-bottom: 20px;
+        text-align: center;
+        color: #333;
+    }
+
+    .unique-register-form input {
+        width: 100%;
+        padding: 12px;
+        margin-bottom: 15px;
+        border-radius: 5px;
+        border: 1px solid #ccc;
+        font-size: 15px;
+    }
+
+    .unique-register-form button {
+        width: 100%;
+        background-color: #28a745;
+        color: #fff;
+        padding: 12px;
+        border: none;
+        border-radius: 5px;
+        font-size: 16px;
+        cursor: pointer;
+    }
+
+    .unique-register-form button:hover {
+        background-color: #218838;
+    }
+
+    .unique-close-btn {
+        position: absolute;
+        top: 8px;
+        right: 15px;
+        font-size: 24px;
+        color: #aaa;
+        cursor: pointer;
+    }
+
+    .unique-close-btn:hover {
+        color: red;
+    }
+
+    @keyframes fadeInUnique {
+        from {
+            opacity: 0;
+            transform: scale(0.9);
+        }
+
+        to {
+            opacity: 1;
+            transform: scale(1);
+        }
+    }
+
+
+
+    /*donation part........................................*/
+
+    .modal-overlay {
+        position: fixed;
+        top: 0;
+        left: 0;
+        width: 100%;
+        height: 100vh;
+        background: rgba(0, 0, 0, 0.5);
+        display: flex;
+        justify-content: center;
+        align-items: center;
+        z-index: 1000;
+    }
+
+    .hidden {
+        display: none;
+    }
+
+    .donation-form {
+        background: #fff;
+        padding: 30px;
+        border-radius: 10px;
+        width: 90%;
+        max-width: 500px;
+        position: relative;
+        animation: fadeInUnique 0.3s ease-in-out;
+    }
+
+    .donation-form h2 {
+        margin-bottom: 20px;
+        text-align: center;
+        color: #333;
+    }
+
+    .donation-form input,
+    .donation-form select,
+    .donation-form textarea {
+        width: 100%;
+        padding: 12px;
+        margin-bottom: 15px;
+        border-radius: 5px;
+        border: 1px solid #ccc;
+        font-size: 15px;
+    }
+
+    .donation-form button {
+        width: 100%;
+        background-color: #28a745;
+        color: #fff;
+        padding: 12px;
+        border: none;
+        border-radius: 5px;
+        font-size: 16px;
+        cursor: pointer;
+    }
+
+    .donation-form button:hover {
+        background-color: #218838;
+    }
+
+    .qr-display {
+        text-align: center;
+    }
+
+    .hidden {
+        display: none;
+    }
+
+    .qr-box {
+        text-align: center;
+        margin-top: 15px;
+        padding: 15px;
+        background-color: #f9f9f9;
+        border-radius: 10px;
+        box-shadow: 0 0 10px rgba(0, 0, 0, 0.1);
+    }
+
+    .qr-box img {
+        width: 120px;
+        height: 120px;
+        margin-top: 10px;
+    }
+
+
+    .close-btn {
+        position: absolute;
+        top: 10px;
+        right: 15px;
+        font-size: 24px;
+        color: #888;
+        cursor: pointer;
+    }
+
+    .close-btn:hover {
+        color: red;
+    }
+</style>
+
+<body>
+    <!-- Paste this inside <body> of your main HTML file -->
+    <div class="modal-overlay hidden" id="contactModal">
+        <div class="contact-form">
+            <span class="close-btn" onclick="closeModal()">&times;</span>
+            <h2>Contact Us</h2>
+            <!-- action="/api/contact" method="post" -->
+            <form id="contactForm" onsubmit="return validateForm()">
+                <input type="text" id="name" name="name" placeholder="Your Name" required />
+                <input type="email" id="email" name="email" placeholder="Your Email" required />
+                <textarea id="message" name="message" rows="4" placeholder="Your Message" required></textarea>
+                <button type="submit">Send Message</button>
+            </form>
+        </div>
+    </div>
+
+    <!-- Unique Register Modal -->
+    <div class="register-modal-overlay hidden-register" id="uniqueRegisterModal">
+        <div class="unique-register-form">
+            <span class="unique-close-btn" onclick="closeUniqueRegisterModal()">&times;</span>
+            <h2>Register</h2>
+            <!-- action="/api/register" method="post" -->
+            <form id="uniqueRegisterForm" onsubmit="return validateUniqueRegisterForm()">
+                <input type="text" id="uniqueRegName" name="name" placeholder="Your Name" required />
+                <input type="email" id="uniqueRegEmail" name="email" placeholder="Your Email" required />
+                <input type="password" id="uniqueRegPassword" name="password" placeholder="Password" required />
+                <button type="submit">Register</button>
+            </form>
+        </div>
+    </div>
+
+
+    <!-- Donation Modal -->
+
+    <div class="modal-overlay hidden" id="donationModal">
+        <div class="donation-form">
+            <span class="close-btn" onclick="closeDonationModal()">&times;</span>
+            <h2>Donate Now</h2>
+
+            <form action="/api/donation" method="post" id="donationForm" onsubmit="return redirectToPayment(event)">
+                <input type="text" id="donorName" name="donorName" placeholder="Your Name" required>
+                <input type="number" id="donationAmount" name="donationAmount" placeholder="Donation Amount" required>
+
+                <textarea id="donationMessage" name="donationMessage" rows="4"
+                    placeholder="Your Message (Optional)"></textarea>
+
+                <!-- Toggle link to show QR -->
+                <div id="qrLinkArea" style="text-align: center; margin: 10px 0;">
+                    <p style="font-size: 13px;">You can directly pay through the QR code below:</p>
+                    <a href="#" onclick="toggleQR(event)" style="color:rgb(50, 38, 130); text-decoration:none;">📷 Show
+                        QR Code</a>
+                </div>
+
+                <!-- Beautiful QR Section -->
+                <div id="qrSmallDisplay" class="qr-box hidden">
+                    <img src="qr_code.jpg" alt="QR Code">
+                    <p style="font-size: 14px; color: gray;">Scan the code using any UPI app (Google Pay, PhonePe,
+                        Paytm)</p>
+                </div>
+
+                <button type="submit">Donate</button>
+            </form>
+        </div>
+    </div>
+
+
+    <header>
+        <nav class="navbar">
+            <div class="fighter">
+
+                <div class="logo">
+
+                </div>
+                <p style="font-size:13px; color: white; margin: 0px; font-weight: bold;">Fight<span
+                        style="color:rgb(236, 12, 150)"> Cancer</span> </p>
+            </div>
+
+            <ul class="nav-links" id="navLinks">
+
+                <li class="item"> <a href="#home">Home</a> </li>
+                <li class="item"> <a href="aboutme.html">About me</a></li>
+                <li class="item"> <a href="#donation">Donate</a></li>
+                <li class="item"> <a href="javascript:void(0);" onclick="showModal()">Contact</a></li>
+                <li class="item"> <a href="#stories">Stories</a> </li>
+                <li class="item"> <a href="#programs">Services</a></li>
+
+            </ul>
+
+            <ul class="donate-part">
+                <li><a href="javascript:void(0);" onclick="showUniqueRegisterModal()" class="nav-register">Register
+                        Now!</a></li>
+                <li><button id="light_modeBtn"><i class="fa-solid fa-moon"> </i> Mode!</button></li>
+
+            </ul>
+            <div class="menu-toggle" id="burger">☰</div>
+
+        </nav>
+    </header>
+
+
+    <section id="home">
+
+        <div class="home-page">
+
+            <h3> WE ENVISION AN INDIA EMPOWERED TO</h3>
+            <h1 style="color: white;"><span id="element"> </span></h1>
+
+
+            <p> We are a platform dedicated to supporting people affected by cancer. Our mission is to provide accurate
+                information, emotional support, and hope to those in need.</p>
+            <div class="btn_container">
+                <div class="btn">
+                    <a href="javascript:void(0);" onclick="showDonationModal()"><button>Donate Here!</button></a>
+
+                </div>
+                <div class="btn_read">
+                    <a href="aboutme.html" target="_blank"><button>Read more</button></a>
+
+                </div>
+            </div>
+        </div>
+
+    </section>
+
+    <section>
+        <div id="focus_area">
+            <div class="focus_heading">
+                <h1>Our focus area</h1>
+                <div>Our mission is to empower all people to defeat cancer through awareness, early detection, patient
+                    support and survivor empowerment. We cannot do this alone, we believe that strategic collaboration
+                    is at the heart of the fight against cancer.</div>
+
+            </div>
+            <div class="cancer_type">
+                <div class="cancer_type_container"> <img src="pediatric-cancer_1.webp"
+                        style="width: 200px; height: 200px;border-radius: 50%;" alt=""> Pediatric Cancer</div>
+                <div class="cancer_type_container"> <img src="pediatric-cancer_2.webp"
+                        style="width: 200px; height: 200px; border-radius: 50%;" alt="">Breast Cancer Cancer</div>
+                <div class="cancer_type_container"> <img src="pediatric-cancer_3.webp"
+                        style="width: 200px; height: 200px; border-radius: 50%;" alt=""> Oral,Head & Neck Cancer </div>
+
+            </div>
+
+        </div>
+
+    </section>
+
+    <section id="donation">
+        <div class="card1">
+            <div class="card1_heading">
+                <h1>Why Your Donation Matters</h1>
+
+                <p>Your generous donation can be a lifeline for cancer patients who are unable to afford treatment.
+                    Every
+                    rupee you contribute helps someone fight for their life and access the care they deserve.
+                    Together, we can give hope to those who are struggling silently.
+
+                    Your contribution can give
+                    them courage, and the care they desperately need. Your donation helps them survive,
+                    recover, and rebuild their lives.
+                </p>
+            </div>
+
+
+            <div class="patient-part">
+                <div class="container">
+                    <div class="pics-part pics-part1"> </div>
+                    <h2>Together, we fight cancer</h2>
+                    <p>A small donation from you can bring a huge change in the life of a cancer patient.</p>
+                    <a href="javascript:void(0);" onclick="showDonationModal()">Donate Now!</a>
+                </div>
+                <div class="container">
+                    <div class="pics-part pics-part2"> </div>
+                    <h2>Your help.save life</h2>
+                    <p>When you donate, you're not just giving money — you're giving someone the chance to live again.
+                    </p>
+                    <a href="javascript:void(0);" onclick="showDonationModal()">Donate Now!</a>
+                </div>
+                <div class="container">
+                    <div class="pics-part pics-part3"> </div>
+                    <h2>Donate. Heal. Smile.</h2>
+                    <p>Many cancer patients struggle not only with pain but also with the fear of being left alone due
+                        to lack of funds.</p>
+                    <a href="javascript:void(0);" onclick="showDonationModal()">Donate Now!</a>
+                </div>
+                <div class="container">
+                    <div class="pics-part pics-part4"> </div>
+                    <h2>Support life. Save a soul</h2>
+                    <p>You may not know their names, but your help gives them another chance to live.</p>
+                    <a href="javascript:void(0);" onclick="showDonationModal()">Donate Now!</a>
+                </div>
+            </div>
+        </div>
+    </section>
+
+
+    <section id="stories">
+        <div class="card2">
+            <h1>Success Stories/Hope Stories </h1>
+            <!-- <hr> -->
+            <div class="container1">
+                <div class="success-texts">
+                    <h2>🌟 Riya's Journey</h2>
+
+                    <p>"Riya, a 10-year-old girl from a small village, was diagnosed with blood cancer. Her family,
+                        struggling to make ends meet, had almost lost all hope of affording her treatment. But then, a
+                        kind-hearted donor stepped in and sponsored her chemotherapy sessions through our support
+                        program. With consistent treatment, proper care, and a lot of prayers — Riya started to recover.
+                        Today, she is back in school, smiling, learning, and dreaming like any other child. Her journey
+                        is a reminder that even a small act of kindness can save a life. Your support made it possible —
+                        and there are many more like Riya who are waiting for that ray of hope."</p>
+                </div>
+
+                <div class="success-pics success-pics1"> </div>
+
+            </div>
+
+            <div class="container1">
+                <div class="success-texts">
+                    <h2>🌟 Anil's Story</h2>
+
+                    <p>"Anil, a 52-year-old father and a hardworking mechanic, was diagnosed with throat cancer. His
+                        world turned upside down as he struggled not only with the disease but also with the fear of not
+                        being able to provide for his family. With no financial resources for treatment, he had almost
+                        accepted defeat. But with timely support from our donor community, Anil received life-saving
+                        treatment including surgery and radiotherapy. Through courage, care, and your generous
+                        contributions, Anil recovered successfully. Today, he’s back in his workshop, smiling again and
+                        living a life full of purpose. His story is a powerful reminder that behind every donation is a
+                        story of hope and a life saved."
+
+                    </p>
+                </div>
+
+                <div class="success-pics success-pics2"> </div>
+            </div>
+
+            <div class="container1">
+                <div class="success-texts">
+                    <h2>🌟 Meera's Victory</h2>
+
+                    <p>"Meera, a young mother of two, was diagnosed with breast cancer. Her biggest fear wasn’t death —
+                        it was leaving her children behind. But timely financial aid from donors made her chemotherapy
+                        and recovery possible. With strength, love, and support, Meera overcame cancer. Today, she
+                        continues to raise her children with joy and gratitude. Your donation gave her a second chance
+                        at motherhood. But timely financial aid from donors made her chemotherapy
+                        and recovery possible. With strength, love, and support, Meera overcame cancer. Today, she
+                        continues to raise her children with joy and gratitude." </p>
+                </div>
+                <div class="success-pics success-pics3"> </div>
+            </div>
+
+
+
+        </div>
+        </div>
+    </section>
+
+    <section id="fund-utilization">
+        <div class="card3">
+            <div class="heading_container">
+                <h1>How We Use Your Donations</h1>
+                <!-- <p>Transparency is the foundation of trust. We value every donation and ensure that your contribution is
+                    used where it matters the most — saving lives and supporting cancer patients during their toughest
+                    battles.Your kindness is more than just a donation — it's a lifeline, a ray of hope for someone
+                    battling cancer.
+                  
+                   
+                </p> -->
+            </div>
+
+            <div class="fund_utilization_container">
+                <div class="ul_p">
+                    <div class="fund_utilization_ul">
+
+                        <ul>
+                            <li><strong>70% - Treatment Support:</strong> Surgeries, Chemotherapy,better test,
+                                radiotherapy, and
+                                medications. </li>
+
+                            <li><strong>15% - Nutritional & Emotional Support:</strong> Special diet supplies,
+                                counseling
+                                sessions, and support groups.</li>
+
+                        </ul>
+
+                        <ul>
+                            <li><strong>10% - Travel & Accommodation:</strong> For patients traveling from rural areas
+                                to
+                                treatment centers.</li>
+
+                            <li><strong>5% - Awareness Campaigns:</strong> Health camps, workshops, educational material
+                                distribution.</li>
+                        </ul>
+
+                    </div>
+
+
+                    <div class="fund_utilization_ul_p">
+
+                        <p>We regularly publish reports, photos, and updates so you can see the real-world impact of
+                            your
+                            contribution. Your trust drives our mission forward.Your support allows us to provide
+                            critical
+                            treatments and nutritional support for patients who are bravely fighting cancer
+                            every day. Each donation is a thread in the fabric of hope we weave together — empowering
+                            families, aiding recovery, and giving children a chance to dream again.
+                        </p>
+
+                    </div>
+                </div>
+
+                <div class="Fund_Utilization_Chart">
+                    <img src="fund_utilization.webp" alt="Fund Utilization Chart">
+
+                </div>
+
+            </div>
+
+
+        </div>
+
+        </div>
+
+    </section>
+
+    <section id="programs" class="programs-section">
+        <div class="program_heading">
+            <h2>Our Supportive Programs</h2>
+            <p>
+                Our supporting programs are the foundation of hope and healing for those battling cancer, especially in
+                underserved communities. From organizing free medical camps for early detection, to spreading awareness
+                through informative workshops, every step is aimed at empowering lives. these programs create a
+                lifeline —
+
+            </p>
+        </div>
+        <!-- <div class="program_paragraph">
+          
+        </div> -->
+        <div class="programs-container">
+            <div class="program-card">
+                <img src="program_pics1.webp" style="border-radius: 10px;" alt="Free Medical Camp">
+                <h3>Free Medical Camps</h3>
+                <p>We organize free health checkups and screenings for early detection of cancer in underserved
+                    communities.</p>
+            </div>
+            <div class="program-card">
+                <img src="program_pics2.webp" style="border-radius: 10px;" alt="Awareness Workshop">
+                <h3>Awareness Workshops</h3>
+                <p>Educational sessions to raise awareness about cancer symptoms, prevention, and early diagnosis in
+                    rural areas.</p>
+            </div>
+            <div class="program-card">
+                <img src="program_pics3.webp" style="border-radius: 10px;" alt="Nutritional Support">
+                <h3>Nutritional Support</h3>
+                <p>Providing nutritional food kits and supplements to support cancer patients' health and recovery.</p>
+            </div>
+            <div class="program-card">
+                <img src="program_pics4.webp" style="border-radius: 10px;" alt="Counseling & Therapy">
+                <h3>Counseling & Therapy</h3>
+                <p>Emotional and psychological support to help cancer patients and their families cope with the journey.
+                </p>
+            </div>
+        </div>
+    </section>
+    <!-- Motivational Video Section -->
+    <section class="motivational-video-safe">
+        <div class="mv-container">
+            <h2 class="mv-heading">Together, we can fight cancer and bring smiles!</h2>
+            <p class="mv-text">
+                Watch this heart-touching video to understand the real stories, struggles, and strength of cancer
+                patients.
+                Your small contribution can create a life-changing impact. Let this video inspire the kindness within
+                you.
+                Together, we can give them hope, health, and happiness.
+            </p>
+
+            <div class="mv-video-wrapper">
+
+                <div
+                    style="aspect-ratio: 16/9; width: 100%;  margin: auto; border-radius: 10px; overflow: hidden; box-shadow: 0 0 15px rgba(0,0,0,0.2);">
+                    <iframe width="100%" height="100%" src="https://www.youtube.com/embed/2REkk9SCRn0"
+                        title="Kitbull - Pixar Short Film" frameborder="0"
+                        allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture"
+                        allowfullscreen>
+                    </iframe>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <section id="gallery">
+        <div class="card4">
+            <h1>Gallery</h1>
+
+            <div class="gallery_container">
+
+                <img src="patient_pic1.webp" alt="#">
+                <img src="patients_pics3.webp" alt="#">
+                <img src="patients_pics4.webp" alt="#">
+                <img src="patient_bg6.jpg" alt="#">
+
+                <img src="patients_pics5.webp" alt="#">
+                <img src="patients_pics6.webp" alt="#">
+                <img src="patients_pics7.webp" alt="#">
+                <img src="patients_pics8.webp" alt="#">
+
+                <img src="patients_pics9.webp" alt="#">
+                <img src="patients_pics10.webp" alt="#">
+                <img src="patient2.jpg" alt="#">
+                <img src="patient4.jpg" alt="#">
+
+            </div>
+
+
+        </div>
+    </section>
+
+
+
+    <section>
+
+        <div id="our_partner">
+            <h1>Our partners</h1>
+
+            <div class="scroll-container">
+                <div class="scroll-content">
+                    <img src="partner1.png" alt="logo_partner" style=" margin:15px;">
+                    <img src="partner2.png" alt="logo_partner" style=" margin:15px;">
+                    <img src="partner3.png" alt="logo_partner" style=" margin:15px;">
+                    <img src="partner4.png" alt="logo_partner" style=" margin:15px;">
+                    <img src="partner5.png" alt="logo_partner" style=" margin:15px;">
+                    <img src="partner6.png" alt="logo_partner" style="margin:15px;">
+                    <img src="partner7 - Copy.png" alt="logo_partner" style=" margin:15px;">
+                    <img src="partner8 - Copy.png" alt="logo_partner" style=" margin:15px;">
+                    <img src="partner9 - Copy.png" alt="logo_partner" style="margin:15px;">
+                    <img src="partner10.png" alt="logo_partner" style="margin:15px;">
+                    <img src="partner11 - Copy.png" alt="logo_partner" style=" margin:15px;">
+                    <img src="partner12 - Copy.png" alt="logo_partner" style="margin:15px;">
+                    <img src="partner13.png" alt="logo_partner" style="margin:15px;">
+                    <img src="partner14 - Copy.png" alt="logo_partner" style=" margin:15px;">
+                    <img src="partner15 - Copy.png" alt="logo_partner" style=" margin:15px;">
+                    <img src="partner16.png" alt="logo_partner" style=" margin:15px;">
+                    <img src="partner17.png" alt="logo_partner" style=" margin:15px;">
+                    <img src="partner18.png" alt="logo_partner" style="margin:15px;">
+                    <img src="partner19.png" alt="logo_partner" style=" margin:15px;">
+                    <img src="partner20.png" alt="logo_partner" style=" margin:15px;">
+                    <img src="partner21.png" alt="logo_partner" style=" margin:15px;">
+                </div>
+            </div>
+
+        </div>
+    </section>
+
+
+    <section>
+        <footer class="footer">
+
+            <div class="footerDiv" style="text-align: center; ">
+                <img src="cancer-lpgo1.jpg" alt="logo"
+                    style="border-radius: 50%; height: 150px; width: 150px;cursor: pointer;">
+                <h2 style="font-weight: bold;">Fight<span style="color:rgb(236, 12, 150); font-weight: bold;">
+                        Cancer</span></h2>
+
+            </div>
+
+            <div class="footerDiv">
+
+                <ul>
+                    <h2> Quick Links</h2>
+                    <li><a href="#home">Home</a></li>
+                    <li><a href="#services">Services</a></li>
+                    <li><a href="#donation">Donates</a></li>
+                    <li><a href="#">Contuct us</a></li>
+                    <li><a href="#stories">Stories</a></li>
+                </ul>
+            </div>
+
+            <div class="footerDiv">
+
+                <ul>
+                    <h2>Our mission</h2>
+                    <li><a href="#programs">Help Patients</a></li>
+                    <li><a href="#programs">Good Treatment</a></li>
+                    <li><a href="#programs">Better Foods</a></li>
+                    <li><a href="#programs">Awaraness</a></li>
+                    <li><a href="#programs">Better Hospital</a></li>
+                </ul>
+
+            </div>
+
+            <div class="footerDiv">
+                <ul>
+                    <h2>Contuct Info</h2>
+                    <li><a href="tel:+9129863844" aria-label="Phone"><i class="fa-solid fa-phone"></i> 9129863844</a>
+                    </li>
+                    <li> <a href="mailto:khuansari@student.iul.ac.in" aria-label="Email"><i
+                                class="fa-solid fa-envelope"></i> khuansari@student.iul.ac.in</a></li>
+
+                    <li> <a href="https://wa.me/9129863844" target="_blank" rel="noopener"
+                            aria-label="WhatsApp">💬Whatsapp</a> </li>
+                    <li> <a href="https://www.iul.ac.in/" target="_blank" rel="noopener" aria-label="Google">Integral
+                            University Lucknow</a> </li>
+
+
+                </ul>
+            </div>
+
+        </footer>
+        <footer>
+
+            <div class="last-footer">
+
+                <ul>
+                    <li>
+                        <p>&copy; 2025 Support My Cancer Patients Mission By <i class="fa-solid fa-heart"></i> . All
+                            rights reserved.</p>
+                    </li>
+                </ul>
+                <ul>
+                    <li>You Can Visit:</li>
+                    <li><a href="https://www.instagram.com/khurshed_ansari0786/?__pwa=1"> <i
+                                class="fa-brands fa-instagram"></i> </a></li>
+                    <li><a href="https://www.facebook.com/khurshed.ansari.1420"> <i class="fa-brands fa-facebook"></i>
+                        </a></li>
+                    <li><a href="https://github.com/khurshedansari0786"> <i class="fa-brands fa-github"></i> </a></li>
+                    <li>
+                        <a
+                            href="https://www.linkedin.com/in/khurshed-ansari-3a69a8330?utm_source=share&utm_campaign=share_via&utm_content=profile&utm_medium=android_app">
+                            <i class="fa-brands fa-linkedin"></i> </a>
+                    </li>
+                </ul>
+            </div>
+        </footer>
+    </section>
+
+
+    <script src="supportCancerPatients.js"></script>
+
+    <script src="https://unpkg.com/typed.js@2.1.0/dist/typed.umd.js"></script>
+    <script>
+
+        var typed = new Typed('#element', {
+            strings: ['Fight Cancer', 'Defeat Cancer', 'Overcome Cancer'],
+            typeSpeed: 40,
+            backSpeed: 25,
+            loop: true  // ✅ This enables infinite looping
+        });
+    </script>
+
+
+</body>
+
+</html>

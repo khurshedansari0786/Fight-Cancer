@@ -4,9 +4,9 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Support cancer Patients</title>
-    <link rel="stylesheet" href="supportCancerPatients.css">
-    <link rel="stylesheet" href="supportCancerPatients_resp.css">
+    <title>Fight Cancer</title>
+    <link rel="stylesheet" href="style.css">
+    <link rel="stylesheet" href="style_resp.css">
     <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.6.0/css/brands.min.css">
     <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.6.0/css/all.min.css">
     <link href="https://fonts.googleapis.com/css2?family=Poppins:wght@400;600&display=swap" rel="stylesheet">
@@ -27,6 +27,110 @@
         background-size: cover;
     }
 
+
+    .modal-overlay1 {
+        position: fixed;
+        top: 0;
+        left: 0;
+        width: 100%;
+        height: 100%;
+        background: rgba(0, 0, 0, 0.4);
+        display: flex;
+        justify-content: end;
+        align-items: center;
+        z-index: 1000;
+    }
+
+    .modal-overlay1.hidden1 {
+        display: none;
+    }
+
+    .close-btn1 {
+        position: absolute;
+        top: 15px;
+        right: 18px;
+        font-size: 22px;
+        cursor: pointer;
+        color: #888;
+    }
+
+    .close-btn1:hover {
+        color: #000;
+    }
+
+    .navMenu {
+        background-color: white;
+        color: black;
+        padding: 40px 30px;
+        box-shadow: 0 5px 15px rgba(0, 0, 0, 0.3);
+        width: 30%;
+        height: 100%;
+        position: relative;
+        font-family: "Mozilla Headline", sans-serif;
+        transform: translateX(100%);
+        /* hidden by default */
+        opacity: 0;
+    }
+
+    .navMenu h2 {
+        text-align: center;
+    }
+
+    /* When active */
+    .modal-overlay1.active .navMenu {
+        animation: slideInRight 0.3s forwards;
+    }
+
+    /* When closing */
+    .modal-overlay1.closing .navMenu {
+        animation: slideOutRight 0.3s forwards;
+    }
+
+    @keyframes slideInRight {
+        from {
+            transform: translateX(100%);
+            opacity: 0;
+        }
+
+        to {
+            transform: translateX(0);
+            opacity: 1;
+        }
+    }
+
+    @keyframes slideOutRight {
+        from {
+            transform: translateX(0);
+            opacity: 1;
+        }
+
+        to {
+            transform: translateX(100%);
+            opacity: 0;
+        }
+    }
+
+    .navMenu ul {
+        padding: 20px 0px;
+    }
+
+    .navMenu ul li {
+        margin-bottom: 10px;
+        list-style: none;
+        padding: 10px 10px;
+        border-radius: 5px;
+    }
+
+    .navMenu ul li a {
+        text-decoration: none;
+        color: black;
+    }
+
+    .navMenu ul li:hover {
+        background-color: lavender;
+
+    }
+
     /* Modal Overlay */
     .modal-overlay {
         position: fixed;
@@ -39,7 +143,7 @@
         display: flex;
         justify-content: center;
         align-items: center;
-        z-index: 9999;
+        z-index: 2000;
     }
 
     /* Form Container */
@@ -116,8 +220,23 @@
         display: none;
     }
 
+    @media(min-width:568px) and (max-width:992px) {
+        .navMenu {
+            width: 40%;
+
+        }
+    }
 
     @media(max-width:567px) {
+
+        .navMenu {
+            width: 55%;
+
+        }
+
+        .navMenu h2 {
+            font-size: 20px;
+        }
 
         .contact-form input,
         .contact-form textarea {
@@ -163,7 +282,7 @@
         display: flex;
         align-items: center;
         justify-content: center;
-        z-index: 9999;
+        z-index: 2000;
     }
 
     .hidden-register {
@@ -250,7 +369,7 @@
         display: flex;
         justify-content: center;
         align-items: center;
-        z-index: 1000;
+        z-index: 2000;
     }
 
     .hidden {
@@ -338,8 +457,30 @@
 </style>
 
 <body>
+
+    <!-- Paste this inside <body> of your main HTML file -->
+    <div class="modal-overlay1 hidden1" id="navMenu">
+
+        <div class="navMenu">
+            <span class="close-btn1" onclick="closeMenu()">&times;</span>
+
+            <h2>Fight <span style="color:rgb(236, 12, 150)">Cancer</span></h2>
+            <ul>
+                <li> <a href="#home">Home</a> </li>
+                <li> <a href="aboutme.html">About me</a></li>
+                <li> <a href="donationsPage.html">DonorList</a></li>
+                <li> <a href="javascript:void(0);" onclick="showModal()">Contact</a></li>
+                <li> <a href="#stories">Stories</a> </li>
+                <li> <a href="#programs">Services</a></li>
+
+            </ul>
+
+        </div>
+
+    </div>
     <!-- Paste this inside <body> of your main HTML file -->
     <div class="modal-overlay hidden" id="contactModal">
+
         <div class="contact-form">
             <span class="close-btn" onclick="closeModal()">&times;</span>
             <h2>Contact Us</h2>
@@ -351,10 +492,12 @@
                 <button type="submit">Send Message</button>
             </form>
         </div>
+
     </div>
 
     <!-- Unique Register Modal -->
     <div class="register-modal-overlay hidden-register" id="uniqueRegisterModal">
+
         <div class="unique-register-form">
             <span class="unique-close-btn" onclick="closeUniqueRegisterModal()">&times;</span>
             <h2>Register</h2>
@@ -366,17 +509,19 @@
                 <button type="submit">Register</button>
             </form>
         </div>
+
     </div>
 
 
     <!-- Donation Modal -->
 
     <div class="modal-overlay hidden" id="donationModal">
+
         <div class="donation-form">
             <span class="close-btn" onclick="closeDonationModal()">&times;</span>
             <h2>Donate Now</h2>
 
-            <form action="/api/donation" method="post" id="donationForm" onsubmit="return redirectToPayment(event)">
+            <form id="donationForm">
                 <input type="text" id="donorName" name="donorName" placeholder="Your Name" required>
                 <input type="number" id="donationAmount" name="donationAmount" placeholder="Donation Amount" required>
 
@@ -416,9 +561,9 @@
 
             <ul class="nav-links" id="navLinks">
 
-                <li class="item"> <a href="#home">Home</a> </li>
+                <li class="item"> <a href="index.html">Home</a> </li>
                 <li class="item"> <a href="aboutme.html">About me</a></li>
-                <li class="item"> <a href="#donation">Donate</a></li>
+                <li class="item"> <a href="donationsPage.html">DonorList</a></li>
                 <li class="item"> <a href="javascript:void(0);" onclick="showModal()">Contact</a></li>
                 <li class="item"> <a href="#stories">Stories</a> </li>
                 <li class="item"> <a href="#programs">Services</a></li>
@@ -431,7 +576,9 @@
                 <li><button id="light_modeBtn"><i class="fa-solid fa-moon"> </i> Mode!</button></li>
 
             </ul>
-            <div class="menu-toggle" id="burger">☰</div>
+            <a href="javascript:void(0);" onclick="openMenu()" class="menu-toggle">
+                <div id="burger">☰</div>
+            </a>
 
         </nav>
     </header>
@@ -874,7 +1021,7 @@
     </section>
 
 
-    <script src="supportCancerPatients.js"></script>
+    <script src="script.js"></script>
 
     <script src="https://unpkg.com/typed.js@2.1.0/dist/typed.umd.js"></script>
     <script>

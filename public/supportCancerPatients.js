@@ -36,36 +36,40 @@ let isDark = false;
 light_modeBtn.addEventListener('click', () => {
   if (!isDark) {
     // Apply Dark Mode
-    document.body.style.backgroundColor = "#0b2440ff";  // Dark grey
-    // document.body.style.backgroundColor = "#181C14";  // Dark grey
-    document.body.style.color = "#ffffff";            // White text
-    light_modeBtn.style.backgroundColor = "#0000FF";     // Darker button bg
+    document.body.style.backgroundColor = "#0b2440ff";  
+    // document.body.style.backgroundColor = "#181C14"; 
+    document.body.style.color = "#ffffff";           
+    light_modeBtn.style.backgroundColor = "#0000FF";   
     light_modeBtn.style.color = "#fff";
-    //  light_modeBtn.textContent="Light!"             // White button text
+    //  light_modeBtn.textContent="Light!"            
     isDark = true;
   } else {
     // Apply Light Mode
-    document.body.style.backgroundColor = "#ffffff";  // White background
-    document.body.style.color = "#222222";            // Dark text
-    light_modeBtn.style.backgroundColor = "#ddd";     // Light button bg// Black button text   
+    document.body.style.backgroundColor = "#ffffff";  
+    document.body.style.color = "#222222";           
+    light_modeBtn.style.backgroundColor = "#ddd";    
     light_modeBtn.style.color = "#000";
     // light_modeBtn.textContent="dark!"  
     isDark = false;
   }
 });
 
-// Show modal function
-function showModal() {
-  document.getElementById('contactModal').classList.remove('hidden');
-}
 
-// Close modal function
-function closeModal() {
-  document.getElementById('contactModal').classList.add('hidden');
-}
+//  old burger part......................
+
+// const burger = document.getElementById('burger');
+// const navMenu = document.getElementById('navLinks');
+
+// burger.addEventListener('click', function () {
+//   if (navMenu.style.display === 'none' || navMenu.style.display === '') {
+//     navMenu.style.display = 'block';
+//   } else {
+//     navMenu.style.display = 'none';
+//   }
+// });
 
 
-// Form validation
+// Form validation..........................................
 function validateForm() {
   const name = document.getElementById('name').value.trim();
   const email = document.getElementById('email').value.trim();
@@ -82,10 +86,49 @@ function validateForm() {
 
 }
 
+// Show modal function
+function showModal() {
+  document.getElementById('contactModal').classList.remove('hidden');
+}
 
+// Close modal function
+function closeModal() {
+  document.getElementById('contactModal').classList.add('hidden');
+}
 
+document.getElementById('contactModal').addEventListener("click", function(e) {
+  if (e.target.classList.contains("modal-overlay")) {
+    closeModal();
+  }
+});
 
+ // new burger setting.......................................................
 
+function openMenu() {
+  const overlay = document.querySelector('.modal-overlay1');
+  overlay.classList.remove('hidden1');
+  overlay.classList.remove('closing');
+  overlay.classList.add('active');
+}
+
+function closeMenu() {
+  const overlay = document.querySelector('.modal-overlay1');
+  overlay.classList.remove('active');
+  overlay.classList.add('closing');
+
+  // jab animation khatam ho tab overlay ko hide karo
+  overlay.addEventListener("animationend", () => {
+    overlay.classList.add('hidden1');
+    overlay.classList.remove('closing');
+  }, { once: true });
+}
+
+// background (overlay) click se band ho jaye
+document.querySelector('.modal-overlay1').addEventListener("click", function(e) {
+  if (e.target.classList.contains("modal-overlay1")) {
+    closeMenu();
+  }
+});
 
 
 // Show Register Modal...............................................................................
@@ -100,6 +143,13 @@ function closeUniqueRegisterModal() {
 }
 
 
+//  overlay par click detect
+document.getElementById('uniqueRegisterModal').addEventListener("click", function(e) {
+  if (e.target.classList.contains("register-modal-overlay")) {
+   closeUniqueRegisterModal();
+  }
+});
+
 // Register Form Validation
 function validateUniqueRegisterForm() {
   const name = document.getElementById('uniqueRegName').value.trim();
@@ -111,108 +161,46 @@ function validateUniqueRegisterForm() {
     return false;
   }
 
-  // alert("Registered Successfully!");
   closeUniqueRegisterModal();
-  return true; // Stop actual submit
+  return true; 
 }
 
 
+   // donation setup.........................................
 
+document.getElementById("donationForm").addEventListener("submit", async function (e) {
+  e.preventDefault();
 
-
-
-// async function redirectToPayment(event) {
-//   event.preventDefault();
-
-
-//   const name = document.getElementById("donorName").value.trim();
-//   const amount = document.getElementById("donationAmount").value.trim();
-//   const message = document.getElementById("donationMessage").value.trim();
-
-//   if (!name || !amount) {
-//     alert("Please enter name and amount.");
-//     return false;
-//   }
-
-//   // 🔄 Store donation via fetch
-//   try {
-//     const res = await fetch("/api/donation", {
-//       method: "POST",
-//       headers: {
-//         "Content-Type": "application/json"
-//       },
-//       body: JSON.stringify({
-//         donorName: name,
-//         donationAmount: amount,
-//         donationMessage: message
-//       })
-//     });
-
-//     if (!res.ok) {
-//       alert("❌ Failed to store donation.");
-//       return false;
-//     }
-//     console.log("✅ Donation stored");
-//     // alert("✅ Donation stored successfully. Redirecting to payment...");
-
-
-//     // 🔁 UPI Payment Redirect
-//     const upiID = "khurshedansari12403@okhdfcbank"; // ✅ Replace with your UPI ID
-//     const upiLink = `upi://pay?pa=${upiID}&pn=${encodeURIComponent(name)}&am=${amount}&cu=INR`;
-//     window.location.href = upiLink;
-
-//     return false;
-
-//   } catch (error) {
-//     console.error("Error:", error);
-//     alert("Something went wrong!");
-//     return false;
-//   }
-// }
-
-
-
-async function redirectToPayment(event) {
-  event.preventDefault();
-
-  const name = document.getElementById("donorName").value.trim();
-  const amount = document.getElementById("donationAmount").value.trim();
-  const message = document.getElementById("donationMessage").value.trim();
-
-  if (!name || !amount) {
-    alert("Please enter name and amount.");
-    return false;
-  }
+  const formData = new FormData(this);
+  const data = Object.fromEntries(formData.entries());
 
   try {
     const res = await fetch("/api/donation", {
       method: "POST",
       headers: { "Content-Type": "application/json" },
-      body: JSON.stringify({
-        donorName: name,
-        donationAmount: amount,
-        donationMessage: message
-      })
+      body: JSON.stringify(data)
     });
 
     if (!res.ok) {
       alert("❌ Failed to store donation.");
-      return false;
+      return;
     }
 
     const result = await res.json();
 
     alert("✅ Donation stored successfully. Redirecting to payment...");
-    window.location.href = result.paymentLink; // 🚀 direct UPI redirect
+    
+    // ✅ Form clear
+    this.reset();
+    // 🚀 Redirect to payment link
+    window.location.href = result.paymentLink;
 
-    return false;
-
-  } catch (error) {
-    console.error("Error:", error);
+  } catch (err) {
+    console.error("Donation failed!", err);
     alert("Something went wrong!");
     return false;
   }
-}
+});
 
 
 // ✅ Toggle QR visibility
@@ -232,25 +220,18 @@ function closeDonationModal() {
   document.getElementById('donationModal').classList.add('hidden');
 }
 
-
-
-
-// burger part
-
-const burger = document.getElementById('burger');
-const navMenu = document.getElementById('navLinks');
-
-burger.addEventListener('click', function () {
-  if (navMenu.style.display === 'none' || navMenu.style.display === '') {
-    navMenu.style.display = 'block';
-  } else {
-    navMenu.style.display = 'none';
+// ✅ overlay par click detect
+document.getElementById('donationModal').addEventListener("click", function(e) {
+  if (e.target.classList.contains("modal-overlay")) {
+    closeDonationModal();
   }
 });
 
 
 
-// Register Form Submission
+
+// Register Form Submission.....................................
+
   document.getElementById("uniqueRegisterForm").addEventListener("submit", async function (e) {
     e.preventDefault(); // prevent default form submission
 
@@ -268,6 +249,8 @@ burger.addEventListener('click', function () {
 
       const result = await res.json();
       alert(result.message || "Registered successfully!");
+      this.reset();
+      
     } catch (err) {
       console.error("Register Error:", err);
       alert("Registration failed.");
@@ -291,6 +274,8 @@ burger.addEventListener('click', function () {
 
       const result = await res.json();
       alert(result.message || "Message sent successfully!");
+       this.reset();
+
     } catch (err) {
       console.error("Contact Error:", err);
       alert("Message sending failed.");

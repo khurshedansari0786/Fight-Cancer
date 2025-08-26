@@ -1,0 +1,874 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Donors List</title>
+  <link rel="stylesheet" href="style.css">
+  <link rel="stylesheet" href="style_resp.css">
+  <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.6.0/css/brands.min.css">
+  <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.6.0/css/all.min.css">
+  <link href="https://fonts.googleapis.com/css2?family=Poppins:wght@400;600&display=swap" rel="stylesheet">
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <link
+    href="https://fonts.googleapis.com/css2?family=Cabin:ital,wght@0,400..700;1,400..700&family=Gravitas+One&family=Mozilla+Headline:wght@200..700&family=Titillium+Web:ital,wght@0,200;0,300;0,400;0,600;0,700;0,900;1,200;1,300;1,400;1,600;1,700&display=swap"
+    rel="stylesheet">
+  <style>
+    body {
+      font-family: Arial, sans-serif;
+      background: #f4f6f9;
+
+    }
+
+    #donorList {
+      padding:10px;
+    }
+
+
+
+    /* Base styling (sab screens ke liye common) */
+    #DonorHome {
+      height:100vh;
+      width: 100%;
+      background-image: url("bg2.jpg");
+      background-size: cover;
+      flex-wrap: wrap;
+    }
+
+    #DonorHome a button {
+      margin-top: 421px;
+      margin-left: 165px;
+      padding: 10px 30px;
+      border-radius: 5px;
+
+      cursor: pointer;
+      color: white;
+      border: none;
+      font-size: 15px;
+      background-size: 300% 300%;
+      background-image: linear-gradient(45deg,
+
+          #c62020,
+          #c97a0c,
+          #d1126e,
+          #50ae0c);
+
+      animation: gradientFlow 2s ease-in-out infinite;
+      box-shadow: 0 8px 20px rgba(0, 0, 0, 0.2);
+      transition: transform 0.3s ease-in-out;
+
+    }
+
+    
+    @media (min-width:900px) and (max-width:1200px) {
+      #DonorHome {
+        height:600px;
+      }
+
+      #DonorHome a button {
+        margin: 350px 0 0 165px;
+        padding: 10px 30px;
+      }
+    }
+
+@media (min-width:601px) and (max-width:899px) {
+      #DonorHome {
+        height:500px;
+      }
+
+      #DonorHome a button {
+        margin: 300px 0 0 155px;
+        padding: 10px 25px;
+      }
+    }
+
+
+    @media (max-width:600px) {
+      #DonorHome {
+        height:300px;
+      }
+
+      #DonorHome a button {
+        margin:215px 0 0 40px;
+        padding: 5px 15px;
+      }
+    }
+    
+
+
+    h1 {
+      text-align: center;
+      color: rgb(236, 12, 150);
+      font-size: 30px;
+     margin: 40px 0px 50px 0px;
+    }
+
+    table {
+      width: 90%;
+      margin: auto;
+      border-collapse: collapse;
+      background: white;
+      box-shadow: 0px 2px 10px rgba(0, 0, 0, 0.1);
+    }
+
+    th,
+    td {
+      padding:12px;
+      text-align: center;
+      border-bottom: 1px solid #ddd;
+
+
+    }
+
+    th {
+      background: #2c3e50;
+      color: white;
+    }
+
+    tr:hover {
+      background: #f1f1f1;
+    }
+
+
+    /* popup css */
+
+    body {
+      /* font-family: Arial, sans-serif; */
+      margin: 0;
+      padding: 0;
+      background: url('your-website-background.jpg') no-repeat center center fixed;
+      background-size: cover;
+    }
+
+
+    .modal-overlay1 {
+      position: fixed;
+      top: 0;
+      left: 0;
+      width: 100%;
+      height: 100%;
+      background: rgba(0, 0, 0, 0.4);
+      display: flex;
+      justify-content: end;
+      align-items: center;
+      z-index: 1000;
+    }
+
+    .modal-overlay1.hidden1 {
+      display: none;
+    }
+
+    .close-btn1 {
+      position: absolute;
+      top: 15px;
+      right: 18px;
+      font-size: 22px;
+      cursor: pointer;
+      color: #888;
+    }
+
+    .close-btn1:hover {
+      color: #000;
+    }
+
+    .navMenu {
+      background-color: white;
+      color: black;
+      padding: 40px 30px;
+      box-shadow: 0 5px 15px rgba(0, 0, 0, 0.3);
+      width: 30%;
+      height: 100%;
+      position: relative;
+      font-family: "Mozilla Headline", sans-serif;
+      transform: translateX(100%);
+      /* hidden by default */
+      opacity: 0;
+    }
+
+    .navMenu h2 {
+      text-align: center;
+    }
+
+    /* When active */
+    .modal-overlay1.active .navMenu {
+      animation: slideInRight 0.3s forwards;
+    }
+
+    /* When closing */
+    .modal-overlay1.closing .navMenu {
+      animation: slideOutRight 0.3s forwards;
+    }
+
+    @keyframes slideInRight {
+      from {
+        transform: translateX(100%);
+        opacity: 0;
+      }
+
+      to {
+        transform: translateX(0);
+        opacity: 1;
+      }
+    }
+
+    @keyframes slideOutRight {
+      from {
+        transform: translateX(0);
+        opacity: 1;
+      }
+
+      to {
+        transform: translateX(100%);
+        opacity: 0;
+      }
+    }
+
+    .navMenu ul {
+      padding: 20px 0px;
+    }
+
+    .navMenu ul li {
+      margin-bottom: 10px;
+      list-style: none;
+      padding: 10px 10px;
+      border-radius: 5px;
+    }
+
+    .navMenu ul li a {
+      text-decoration: none;
+      color: black;
+    }
+
+    .navMenu ul li:hover {
+      background-color: lavender;
+
+    }
+
+    /* Modal Overlay */
+    .modal-overlay {
+      position: fixed;
+      top: 0;
+      left: 0;
+      width: 100%;
+      height: 100%;
+      background: rgba(0, 0, 0, 0.4);
+      /* Transparent overlay*/
+      display: flex;
+      justify-content: center;
+      align-items: center;
+      z-index: 2000;
+    }
+
+    /* Form Container */
+    .contact-form {
+      background: #fff;
+      padding: 20px 30px;
+      border-radius: 8px;
+      box-shadow: 0 5px 15px rgba(0, 0, 0, 0.3);
+      width: 90%;
+      max-width: 400px;
+      position: relative;
+      animation: fadeInUnique1 0.3s ease-in-out;
+    }
+
+    @keyframes fadeInUnique1 {
+      from {
+        opacity: 0;
+        transform: scale(0.9);
+      }
+
+      to {
+        opacity: 1;
+        transform: scale(1);
+      }
+    }
+
+
+    .contact-form h2 {
+      margin-top: 0;
+      font-size: 22px;
+      color: #333;
+    }
+
+    .contact-form input,
+    .contact-form textarea {
+      width: 100%;
+      padding: 10px;
+      margin: 8px 0 16px;
+      border: 1px solid #ccc;
+      border-radius: 4px;
+    }
+
+    .contact-form button {
+      background-color: #007BFF;
+      color: #fff;
+      padding: 10px 15px;
+      border: none;
+      border-radius: 4px;
+      cursor: pointer;
+      width: 100%;
+    }
+
+    .contact-form button:hover {
+      background-color: #0056b3;
+    }
+
+    /* Close Button */
+    .close-btn {
+      position: absolute;
+      top: 8px;
+      right: 12px;
+      font-size: 22px;
+      cursor: pointer;
+      color: #888;
+    }
+
+    .close-btn:hover {
+      color: #000;
+
+    }
+
+    /* Hide modal by default */
+    .modal-overlay.hidden {
+      display: none;
+    }
+
+    @media(min-width:568px) and (max-width:992px) {
+      .navMenu {
+        width: 40%;
+
+      }
+    
+    }
+
+    @media(max-width:567px) {
+
+    
+      .navMenu {
+        width: 55%;
+
+      }
+
+      .navMenu h2 {
+        font-size: 20px;
+      }
+
+      .contact-form input,
+      .contact-form textarea {
+        width: 100%;
+        padding: 8px;
+        margin: 5px 0 14px;
+      }
+
+      .contact-form {
+        background: #fff;
+        padding: 10px 20px;
+        border-radius: 8px;
+        box-shadow: 0 5px 15px rgba(0, 0, 0, 0.3);
+        width: 100%;
+        max-width: 340px;
+      }
+
+      .contact-form h2 {
+        margin-bottom: 15px;
+        font-size: 25px;
+        color: #333;
+      }
+
+      .contact-form button {
+        padding: 5px 14px;
+        border: none;
+        border-radius: 4px;
+        cursor: pointer;
+        width: 100%;
+      }
+
+    }
+
+    /* Register-form */
+
+    .register-modal-overlay {
+      position: fixed;
+      top: 0;
+      left: 0;
+      width: 100%;
+      height: 100vh;
+      background-color: rgba(0, 0, 0, 0.6);
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      z-index: 2000;
+    }
+
+    .hidden-register {
+      display: none;
+    }
+
+    .unique-register-form {
+      background-color: #fff;
+      padding: 30px;
+      border-radius: 10px;
+      width: 90%;
+      max-width: 400px;
+      box-shadow: 0 5px 20px rgba(0, 0, 0, 0.3);
+      position: relative;
+      animation: fadeInUnique 0.3s ease-in-out;
+    }
+
+    .unique-register-form h2 {
+      margin-bottom: 20px;
+      text-align: center;
+      color: #333;
+    }
+
+    .unique-register-form input {
+      width: 100%;
+      padding: 12px;
+      margin-bottom: 15px;
+      border-radius: 5px;
+      border: 1px solid #ccc;
+      font-size: 15px;
+    }
+
+    .unique-register-form button {
+      width: 100%;
+      background-color: #28a745;
+      color: #fff;
+      padding: 12px;
+      border: none;
+      border-radius: 5px;
+      font-size: 16px;
+      cursor: pointer;
+    }
+
+    .unique-register-form button:hover {
+      background-color: #218838;
+    }
+
+    .unique-close-btn {
+      position: absolute;
+      top: 8px;
+      right: 15px;
+      font-size: 24px;
+      color: #aaa;
+      cursor: pointer;
+    }
+
+    .unique-close-btn:hover {
+      color: red;
+    }
+
+    @keyframes fadeInUnique {
+      from {
+        opacity: 0;
+        transform: scale(0.9);
+      }
+
+      to {
+        opacity: 1;
+        transform: scale(1);
+      }
+    }
+
+
+
+    /*donation part........................................*/
+
+    .modal-overlay {
+      position: fixed;
+      top: 0;
+      left: 0;
+      width: 100%;
+      height: 100vh;
+      background: rgba(0, 0, 0, 0.5);
+      display: flex;
+      justify-content: center;
+      align-items: center;
+      z-index: 2000;
+    }
+
+    .hidden {
+      display: none;
+    }
+
+    .donation-form {
+      background: #fff;
+      padding: 30px;
+      border-radius: 10px;
+      width: 90%;
+      max-width: 500px;
+      position: relative;
+      animation: fadeInUnique 0.3s ease-in-out;
+    }
+
+    .donation-form h2 {
+      margin-bottom: 20px;
+      text-align: center;
+      color: #333;
+    }
+
+    .donation-form input,
+    .donation-form select,
+    .donation-form textarea {
+      width: 100%;
+      padding: 12px;
+      margin-bottom: 15px;
+      border-radius: 5px;
+      border: 1px solid #ccc;
+      font-size: 15px;
+    }
+
+    .donation-form button {
+      width: 100%;
+      background-color: #28a745;
+      color: #fff;
+      padding: 12px;
+      border: none;
+      border-radius: 5px;
+      font-size: 16px;
+      cursor: pointer;
+    }
+
+    .donation-form button:hover {
+      background-color: #218838;
+    }
+
+    .qr-display {
+      text-align: center;
+    }
+
+    .hidden {
+      display: none;
+    }
+
+    .qr-box {
+      text-align: center;
+      margin-top: 15px;
+      padding: 15px;
+      background-color: #f9f9f9;
+      border-radius: 10px;
+      box-shadow: 0 0 10px rgba(0, 0, 0, 0.1);
+    }
+
+    .qr-box img {
+      width: 120px;
+      height: 120px;
+      margin-top: 10px;
+    }
+
+
+    .close-btn {
+      position: absolute;
+      top: 10px;
+      right: 15px;
+      font-size: 24px;
+      color: #888;
+      cursor: pointer;
+    }
+
+    .close-btn:hover {
+      color: red;
+    }
+
+
+
+    
+  </style>
+</head>
+
+<body>
+
+
+  <!-- Paste this inside <body> of your main HTML file -->
+  <div class="modal-overlay1 hidden1" id="navMenu">
+
+    <div class="navMenu">
+      <span class="close-btn1" onclick="closeMenu()">&times;</span>
+
+      <h2>Fight <span style="color:rgb(236, 12, 150)">Cancer</span></h2>
+      <ul>
+        <li> <a href="index.html">Home</a> </li>
+        <li> <a href="aboutme.html">About me</a></li>
+        <li> <a href="donationsPage.html">DonorList</a></li>
+        <li> <a href="javascript:void(0);" onclick="showModal()">Contact</a></li>
+        <li> <a href="#stories">Stories</a> </li>
+        <li> <a href="#programs">Services</a></li>
+
+      </ul>
+
+    </div>
+
+  </div>
+  <!-- Paste this inside <body> of your main HTML file -->
+  <div class="modal-overlay hidden" id="contactModal">
+
+    <div class="contact-form">
+      <span class="close-btn" onclick="closeModal()">&times;</span>
+      <h2>Contact Us</h2>
+      <!-- action="/api/contact" method="post" -->
+      <form id="contactForm" onsubmit="return validateForm()">
+        <input type="text" id="name" name="name" placeholder="Your Name" required />
+        <input type="email" id="email" name="email" placeholder="Your Email" required />
+        <textarea id="message" name="message" rows="4" placeholder="Your Message" required></textarea>
+        <button type="submit">Send Message</button>
+      </form>
+    </div>
+
+  </div>
+
+  <!-- Unique Register Modal -->
+  <div class="register-modal-overlay hidden-register" id="uniqueRegisterModal">
+
+    <div class="unique-register-form">
+      <span class="unique-close-btn" onclick="closeUniqueRegisterModal()">&times;</span>
+      <h2>Register</h2>
+      <!-- action="/api/register" method="post" -->
+      <form id="uniqueRegisterForm" onsubmit="return validateUniqueRegisterForm()">
+        <input type="text" id="uniqueRegName" name="name" placeholder="Your Name" required />
+        <input type="email" id="uniqueRegEmail" name="email" placeholder="Your Email" required />
+        <input type="password" id="uniqueRegPassword" name="password" placeholder="Password" required />
+        <button type="submit">Register</button>
+      </form>
+    </div>
+
+  </div>
+
+
+  <!-- Donation Modal -->
+
+  <div class="modal-overlay hidden" id="donationModal">
+
+    <div class="donation-form">
+      <span class="close-btn" onclick="closeDonationModal()">&times;</span>
+      <h2>Donate Now</h2>
+
+      <form id="donationForm">
+        <input type="text" id="donorName" name="donorName" placeholder="Your Name" required>
+        <input type="number" id="donationAmount" name="donationAmount" placeholder="Donation Amount" required>
+
+        <textarea id="donationMessage" name="donationMessage" rows="4" placeholder="Your Message (Optional)"></textarea>
+
+        <!-- Toggle link to show QR -->
+        <div id="qrLinkArea" style="text-align: center; margin: 10px 0;">
+          <p style="font-size: 13px;">You can directly pay through the QR code below:</p>
+          <a href="#" onclick="toggleQR(event)" style="color:rgb(50, 38, 130); text-decoration:none;">📷 Show
+            QR Code</a>
+        </div>
+
+        <!-- Beautiful QR Section -->
+        <div id="qrSmallDisplay" class="qr-box hidden">
+          <img src="qr_code.jpg" alt="QR Code">
+          <p style="font-size: 14px; color: gray;">Scan the code using any UPI app (Google Pay, PhonePe,
+            Paytm)</p>
+        </div>
+
+        <button type="submit">Donate</button>
+      </form>
+    </div>
+  </div>
+
+
+  <header>
+    <nav class="navbar">
+      <div class="fighter">
+
+        <div class="logo">
+
+        </div>
+        <p style="font-size:13px; color: white; margin: 0px; font-weight: bold;">Fight<span
+            style="color:rgb(236, 12, 150)"> Cancer</span> </p>
+      </div>
+
+      <ul class="nav-links" id="navLinks">
+
+        <li class="item"> <a href="#home">Home</a> </li>
+        <li class="item"> <a href="aboutme.html">About me</a></li>
+        <li class="item"> <a href="donationsPage.html">DonorList</a></li>
+        <li class="item"> <a href="javascript:void(0);" onclick="showModal()">Contact</a></li>
+        <li class="item"> <a href="#stories">Stories</a> </li>
+        <li class="item"> <a href="#programs">Services</a></li>
+
+      </ul>
+
+      <ul class="donate-part">
+        <li><a href="javascript:void(0);" onclick="showUniqueRegisterModal()" class="nav-register">Register
+            Now!</a></li>
+        <li><button id="light_modeBtn"><i class="fa-solid fa-moon"> </i> Mode!</button></li>
+
+      </ul>
+      <a href="javascript:void(0);" onclick="openMenu()" class="menu-toggle">
+        <div id="burger">☰</div>
+      </a>
+
+    </nav>
+  </header>
+
+
+  <section id="DonorHome">
+    <a href="javascript:void(0);" onclick="showDonationModal()"><button>Donate Here!</button></a>
+    <!-- <img src="bg2.jpg" alt="HomePage" style="width: 100%; height:500px;"> -->
+  </section>
+
+  <section id="donorList">
+    <h1>Our Generous Donors</h1>
+    <table>
+      <thead>
+        <tr>
+          <th>Name</th>
+          <th>Amount (₹)</th>
+          <th>Message</th>
+          <th>Date</th>
+        </tr>
+      </thead>
+      <tbody id="donationTable"></tbody>
+    </table>
+  </section>
+  <section>
+
+
+ <section>
+
+        <div id="our_partner">
+            <h1>Our partners</h1>
+
+            <div class="scroll-container">
+                <div class="scroll-content">
+                    <img src="partner1.png" alt="logo_partner" style=" margin:15px;">
+                    <img src="partner2.png" alt="logo_partner" style=" margin:15px;">
+                    <img src="partner3.png" alt="logo_partner" style=" margin:15px;">
+                    <img src="partner4.png" alt="logo_partner" style=" margin:15px;">
+                    <img src="partner5.png" alt="logo_partner" style=" margin:15px;">
+                    <img src="partner6.png" alt="logo_partner" style="margin:15px;">
+                    <img src="partner7 - Copy.png" alt="logo_partner" style=" margin:15px;">
+                    <img src="partner8 - Copy.png" alt="logo_partner" style=" margin:15px;">
+                    <img src="partner9 - Copy.png" alt="logo_partner" style="margin:15px;">
+                    <img src="partner10.png" alt="logo_partner" style="margin:15px;">
+                    <img src="partner11 - Copy.png" alt="logo_partner" style=" margin:15px;">
+                    <img src="partner12 - Copy.png" alt="logo_partner" style="margin:15px;">
+                    <img src="partner13.png" alt="logo_partner" style="margin:15px;">
+                    <img src="partner14 - Copy.png" alt="logo_partner" style=" margin:15px;">
+                    <img src="partner15 - Copy.png" alt="logo_partner" style=" margin:15px;">
+                    <img src="partner16.png" alt="logo_partner" style=" margin:15px;">
+                    <img src="partner17.png" alt="logo_partner" style=" margin:15px;">
+                    <img src="partner18.png" alt="logo_partner" style="margin:15px;">
+                    <img src="partner19.png" alt="logo_partner" style=" margin:15px;">
+                    <img src="partner20.png" alt="logo_partner" style=" margin:15px;">
+                    <img src="partner21.png" alt="logo_partner" style=" margin:15px;">
+                </div>
+            </div>
+
+        </div>
+    </section>
+
+
+    <footer class="footer">
+
+      <div class="footerDiv" style="text-align: center; ">
+        <img src="cancer-lpgo1.jpg" alt="logo" style="border-radius: 50%; height: 150px; width: 150px;cursor: pointer;">
+        <h2 style="font-weight: bold;">Fight<span style="color:rgb(236, 12, 150); font-weight: bold;">
+            Cancer</span></h2>
+
+      </div>
+
+      <div class="footerDiv">
+
+        <ul>
+          <h2> Quick Links</h2>
+          <li><a href="#home">Home</a></li>
+          <li><a href="#services">Services</a></li>
+          <li><a href="#donation">Donates</a></li>
+          <li><a href="#">Contuct us</a></li>
+          <li><a href="#stories">Stories</a></li>
+        </ul>
+      </div>
+
+      <div class="footerDiv">
+
+        <ul>
+          <h2>Our mission</h2>
+          <li><a href="#programs">Help Patients</a></li>
+          <li><a href="#programs">Good Treatment</a></li>
+          <li><a href="#programs">Better Foods</a></li>
+          <li><a href="#programs">Awaraness</a></li>
+          <li><a href="#programs">Better Hospital</a></li>
+        </ul>
+
+      </div>
+
+      <div class="footerDiv">
+        <ul>
+          <h2>Contuct Info</h2>
+          <li><a href="tel:+9129863844" aria-label="Phone"><i class="fa-solid fa-phone"></i> 9129863844</a>
+          </li>
+          <li> <a href="mailto:khuansari@student.iul.ac.in" aria-label="Email"><i class="fa-solid fa-envelope"></i>
+              khuansari@student.iul.ac.in</a></li>
+
+          <li> <a href="https://wa.me/9129863844" target="_blank" rel="noopener" aria-label="WhatsApp">💬Whatsapp</a>
+          </li>
+          <li> <a href="https://www.iul.ac.in/" target="_blank" rel="noopener" aria-label="Google">Integral
+              University Lucknow</a> </li>
+
+
+        </ul>
+      </div>
+
+    </footer>
+    <footer>
+
+      <div class="last-footer">
+
+        <ul>
+          <li>
+            <p>&copy; 2025 Support My Cancer Patients Mission By <i class="fa-solid fa-heart"></i> . All
+              rights reserved.</p>
+          </li>
+        </ul>
+        <ul>
+          <li>You Can Visit:</li>
+          <li><a href="https://www.instagram.com/khurshed_ansari0786/?__pwa=1"> <i class="fa-brands fa-instagram"></i>
+            </a></li>
+          <li><a href="https://www.facebook.com/khurshed.ansari.1420"> <i class="fa-brands fa-facebook"></i>
+            </a></li>
+          <li><a href="https://github.com/khurshedansari0786"> <i class="fa-brands fa-github"></i> </a></li>
+          <li>
+            <a
+              href="https://www.linkedin.com/in/khurshed-ansari-3a69a8330?utm_source=share&utm_campaign=share_via&utm_content=profile&utm_medium=android_app">
+              <i class="fa-brands fa-linkedin"></i> </a>
+          </li>
+        </ul>
+      </div>
+    </footer>
+  </section>
+
+  <script>
+    async function fetchDonations() {
+      try {
+        const res = await fetch("http://localhost:3000/api/donations"); // 👈 API ka backend URL
+        const donations = await res.json();
+
+        const table = document.getElementById("donationTable");
+        table.innerHTML = "";
+
+        donations.forEach(d => {
+          const row = document.createElement("tr");
+          row.innerHTML = `
+            <td>${d.donorName}</td>
+            <td>₹${d.donationAmount}</td>
+            <td>${d.donationMessage || "-"}</td>
+            <td>${new Date(d.createdAt).toLocaleString()}</td>
+          `;
+          table.appendChild(row);
+        });
+      } catch (err) {
+        console.error("Error fetching donations:", err);
+      }
+    }
+
+    fetchDonations();
+  </script>
+  <script src="script.js"></script>
+</body>
+
+</html>
